@@ -118,6 +118,9 @@
       lost : 0,
       draw : 0,
       totalGamesPlayed: 0,
+      displayScore: function(){
+        return `Win:${this.win} , Lost:${this.lost}, Draw: ${this.draw}, Total Games Played:${this.totalGamesPlayed}`
+      }
     }
 
     function buttonClicked(userInput) {
@@ -176,7 +179,7 @@
         const loseAudio = document.getElementById("lose-audio");
         loseAudio.play();
       }
-      document.querySelector('#totalGamesPlayed').innerText = `Total Gamed Played: ${score.totalGamesPlayed}`;
+      document.querySelector('#totalGamesPlayed').innerText = score.displayScore();
     }
   </script>
 </body>
