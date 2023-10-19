@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rock, Paper, Scissors</title>
+  <style>
+    body {
+      text-align: center;
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    h1 {
+      background-color: #333;
+      color: #fff;
+      padding: 20px;
+      margin: 0;
+    }
+
+    button {
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      margin: 10px;
+      cursor: pointer;
+      font-size: 18px;
+      border-radius: 5px;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    p {
+      font-size: 18px;
+      margin: 10px 0;
+    }
+
+    div {
+      max-width: 400px;
+      /* Set your preferred max width */
+      padding: 20px;
+      border: 2px solid #333;
+      border-radius: 10px;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+
+    #win{
+      color: rgb(177, 243, 78);
+    }
+
+    #lose{
+      color: red;
+    }
+
+    #draw{
+      color: blue;
+    }
+
+    #totalGamesPlayed{
+      color:brown;
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <h1>Rock | Paper | Scissors</h1>
+    <img
+      src="https://images.squarespace-cdn.com/content/v1/5c5821a270468010638b474a/1549967613284-LUFPWN9AVL3KBQXG4X8Z/rock+paper+scissors+FINALS_Full+logo+-+landscape.png"
+      alt="Rock, Paper, Scissors Logo">
+    <h2>Choose one: </h2>
+    <button onclick="buttonClicked('Rock')">Rock</button>
+    <button onclick="buttonClicked('Paper')">Paper</button>
+    <button onclick="buttonClicked('Scissor')">Scissor</button>
+    <p id="your-choice"></p>
+    <p id="comp-choice"></p>
+    <p id="result"></p>
+    <p id="win"></p>
+    <p id="lose"></p>
+    <p id="draw"></p>
+    <p id="totalGamesPlayed"></p>
+
+    <!-- Developer attribution -->
+   <p>Developed by Bickey</p>
+  </div>
+  <audio id="win-audio">
+    <source src="win.mp3" type="audio/mpeg">
+  </audio>
+
+  <audio id="lose-audio">
+    <source src="loose.mp3" type="audio/mpeg">
+  </audio>
+
+  <audio id="draw-audio">
+    <source src="draw.mp3" type="audio/mpeg">
+  </audio>
+
+   
+  <script>
+    let score ={
+      win : 0,
+      lost : 0,
+      draw : 0,
+      totalGamesPlayed: 0,
+    }
+
+    function buttonClicked(userInput) {
+      let randNumber = Math.floor(Math.random() * 3); // Gives random number from 0-3 then floor makes it 0, 1, or 2
+      let compChoice = '';
+      if (randNumber ==0) {
+        compChoice = 'Rock';
+      } else if (randNumber ==1) {
+        compChoice = 'Paper';
+      } else {
+        compChoice = 'Scissor';
+      }
+
+      if (compChoice == userInput) {
+        score.draw++;
+        score.totalGamesPlayed++;
+        document.querySelector('#your-choice').innerText = "User Choose: " + userInput;
+        document.querySelector('#comp-choice').innerText = "Computer Choose: " + compChoice;
+        document.querySelector('#result').innerText = "Result: Draw";
+        document.querySelector('#draw').innerText = `Draw: ${score.draw}`;
+        
+
+        const drawAudio = document.getElementById("draw-audio");
+        drawAudio.play();
+      } else if (
+        (userInput === 'Rock' && compChoice === 'Scissor') ||
+        (userInput === 'Paper' && compChoice === 'Rock') ||
+        (userInput === 'Scissor' && compChoice === 'Paper')
+      ) {
+        score.win++;
+        score.totalGamesPlayed++;
+        document.querySelector('#your-choice').innerText = "User Choose: " + userInput;
+        document.querySelector('#comp-choice').innerText = "Computer Choose: " + compChoice;
+        document.querySelector('#result').innerText = "Result: You Win";
+        document.querySelector('#win').innerText = `Win: ${score.win}`;
+        
+
+        // Play the winning sound
+        const winAudio = document.getElementById("win-audio");
+        winAudio.play();
+
+        // Stop the audio after 3 seconds
+        setTimeout(function () {
+          winAudio.pause();
+          winAudio.currentTime = 0; // Reset the audio to the beginning
+        }, 3000);
+
+      } else {
+        score.lost++;
+        score.totalGamesPlayed++;
+        document.querySelector('#your-choice').innerText = "User Choose: " + userInput;
+        document.querySelector('#comp-choice').innerText = "Computer Choose: " + compChoice;
+        document.querySelector('#result').innerText = "Result: You Lose";
+        document.querySelector('#lose').innerText = `Lose: ${score.lost}`;
+        // Play the lose sound
+        const loseAudio = document.getElementById("lose-audio");
+        loseAudio.play();
+      }
+      document.querySelector('#totalGamesPlayed').innerText = `Total Gamed Played: ${score.totalGamesPlayed}`;
+    }
+  </script>
+</body>
+
+</html>
