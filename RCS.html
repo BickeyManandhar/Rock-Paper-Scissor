@@ -56,8 +56,8 @@
     }
 
     img {
-      width: 100%;
-      height: 100%;
+      width: 55%;
+      height: 55%;
     }
 
     #win {
@@ -75,6 +75,11 @@
     #totalGamesPlayed {
       color: brown;
     }
+    .choice-image {
+  width: 45px; /* Adjust this value as needed to make the images smaller */
+  height: 45px; /* Adjust this value as needed to make the images smaller */
+}
+
   </style>
 </head>
 
@@ -85,9 +90,26 @@
       src="https://images.squarespace-cdn.com/content/v1/5c5821a270468010638b474a/1549967613284-LUFPWN9AVL3KBQXG4X8Z/rock+paper+scissors+FINALS_Full+logo+-+landscape.png"
       alt="Rock, Paper, Scissors Logo">
     <h2>Choose one: </h2>
-    <button onclick="buttonClicked('Rock')">Rock</button>
-    <button onclick="buttonClicked('Paper')">Paper</button>
-    <button onclick="buttonClicked('Scissor')">Scissor</button>
+    <span class="button-container">
+    <button onclick="buttonClicked('Rock')">
+        <img class="choice-image" src="rock.jpg" alt="Rock">
+        <p>Rock</p>
+    </button>
+</span>
+<span class="button-container">
+    <button onclick="buttonClicked('Paper')">
+        <img class="choice-image" src="paper.png" alt="Paper">
+        <p>Paper</p>
+    </button>
+</span>
+<span class="button-container">
+    <button onclick="buttonClicked('Scissor')">
+        <img class="choice-image" src="scissor.png" alt="Scissor">
+        <p>Scissor</p>
+    </button>
+</span>
+
+  
     <p id="your-choice"></p>
     <p id="comp-choice"></p>
     <p id="result"></p>
