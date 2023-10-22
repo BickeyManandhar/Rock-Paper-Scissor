@@ -1,0 +1,76 @@
+body {
+  text-align: center;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+h1 {
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+  margin: 0;
+}
+
+button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  margin: 10px;
+  cursor: pointer;
+  font-size: 18px;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+p {
+  font-size: 18px;
+  margin: 10px 0;
+}
+
+div {
+  max-width: 400px;
+  /* Set your preferred max width */
+  padding: 20px;
+  border: 2px solid #333;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+img {
+  width: 55%;
+  height: 55%;
+}
+
+#win {
+  color: rgb(177, 243, 78);
+}
+
+#lose {
+  color: red;
+}
+
+#draw {
+  color: blue;
+}
+
+#totalGamesPlayed {
+  color: brown;
+}
+
+.choice-image {
+  width: 45px;
+  /* Adjust this value as needed to make the images smaller */
+  height: 45px;
+  /* Adjust this value as needed to make the images smaller */
+}
